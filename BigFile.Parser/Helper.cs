@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 
-namespace BeezUpTechnical
+namespace BigFile.Parser
 {
-    internal static class Helper{
+    internal static class Helper
+    {
 
         internal const string Column = "column";
         internal const string ColumnA = "columnA";

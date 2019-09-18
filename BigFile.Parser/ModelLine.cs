@@ -1,4 +1,4 @@
-﻿namespace BeezUpTechnical
+﻿namespace BigFile.Parser
 {
     public class ModelLine
     {
@@ -10,10 +10,10 @@
 
         internal ModelLine(string a, string b, int c, int d)
         {
-            this.columnA = a;
-            this.columnB = b;
-            this.columnC = c;
-            this.columnD = d;
+            columnA = a;
+            columnB = b;
+            columnC = c;
+            columnD = d;
         }
 
         public int ColumnD => columnD;

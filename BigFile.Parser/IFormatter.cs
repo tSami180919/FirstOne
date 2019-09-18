@@ -1,4 +1,4 @@
-﻿namespace BeezUpTechnical
+﻿namespace BigFile.Parser
 {
     public interface IFormatter
     {

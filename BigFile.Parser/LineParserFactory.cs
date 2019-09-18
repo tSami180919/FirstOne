@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BeezUpTechnical
+namespace BigFile.Parser
 {
     internal static class LineParserFactory
     {

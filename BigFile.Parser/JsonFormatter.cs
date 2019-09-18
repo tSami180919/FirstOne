@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 
-namespace BeezUpTechnical
+namespace BigFile.Parser
 {
     public class JsonFormatter : IFormatter
     {
@@ -20,13 +20,13 @@ namespace BeezUpTechnical
         public string FormatValid(int lineId, ModelLine line)
         {
 
-            if ((line.ColumnC + line.ColumnD) <= 100)
+            if (line.ColumnC + line.ColumnD <= 100)
                 return string.Empty;
 
             JObject result = new JObject(
                                 new JProperty("lineNumber", lineId),
                                 new JProperty("type", "ok"),
-                                new JProperty("concatAB", line.ColumnA+line.ColumnB),
+                                new JProperty("concatAB", line.ColumnA + line.ColumnB),
                                 new JProperty("sumCD", line.ColumnC + line.ColumnD));
 
             return result.ToString(Formatting.None);

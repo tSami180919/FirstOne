@@ -1,7 +1,7 @@
 ﻿using Common.Useful;
 using System;
 
-namespace BeezUpTechnical
+namespace BigFile.Parser
 {
     internal class LineParser
     {
@@ -12,10 +12,10 @@ namespace BeezUpTechnical
 
         internal LineParser(int a, int b, int c, int d)
         {
-            this.indexColumnA = a;
-            this.indexColumnB = b;
-            this.indexColumnC = c;
-            this.indexColumnD = d;
+            indexColumnA = a;
+            indexColumnB = b;
+            indexColumnC = c;
+            indexColumnD = d;
         }
 
         internal StatusData<ModelLine> Act(string line)
