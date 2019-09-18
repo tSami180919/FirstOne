@@ -5,37 +5,35 @@ namespace BigFile.Parser
 {
     public class FileParser
     {
-
         private readonly string fileToRead;
+        private readonly OutputType outputType;
+        private readonly string fileToCreate;
 
-        public FileParser(string fileToRead)
+        public FileParser(string fileToRead, OutputType outputType, string fileToCreate)
         {
             this.fileToRead = fileToRead;
+            this.outputType = outputType;
+            this.fileToCreate = fileToCreate;
         }
 
         public void Execute()
         {
-            if (!File.Exists(fileToRead))
-                throw new ArgumentException($"File {fileToRead} Does not exist !");
-
-            var directory = Path.GetDirectoryName(fileToRead);
-            var outputFilePath = Path.Combine(directory, $"Output_{DateTime.UtcNow.Ticks}.json");
-
 
             using (var streamReader = new StreamReader(fileToRead))
-            using (StreamWriter outputFileStreamWriter = File.CreateText(outputFilePath))
+            using (StreamWriter outputFileStreamWriter = File.CreateText(fileToCreate))
             {
 
                 var firstLine = streamReader.ReadLine();
                 var lineParser = LineParserFactory.Build(firstLine);
-                var lineFormatter = LineFormatterFactory.Build();
+                var lineFormatter = LineFormatterFactory.Build(outputType);
+
+
+                outputFileStreamWriter.WriteLine(lineFormatter.FirstLine());
 
 
 
                 string currentLine;
                 int lineNumber = 0;
-                // Read and display lines from the file until the end of 
-                // the file is reached.
                 while ((currentLine = streamReader.ReadLine()) != null)
                 {
                     var modelLines = lineParser.Act(currentLine);
@@ -50,9 +48,10 @@ namespace BigFile.Parser
                         outputFileStreamWriter.WriteLine(lineToWrite);
 
                 }
+
+                outputFileStreamWriter.WriteLine(lineFormatter.LastLine());
+
             }
         }
-
-
     }
 }

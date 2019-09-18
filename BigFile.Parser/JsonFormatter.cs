@@ -20,7 +20,7 @@ namespace BigFile.Parser
         public string FormatValid(int lineId, ModelLine line)
         {
 
-            if (line.ColumnC + line.ColumnD <= 100)
+            if ((line.ColumnC + line.ColumnD) <= 100)
                 return string.Empty;
 
             JObject result = new JObject(
@@ -30,6 +30,16 @@ namespace BigFile.Parser
                                 new JProperty("sumCD", line.ColumnC + line.ColumnD));
 
             return result.ToString(Formatting.None);
+        }
+
+        public string FirstLine()
+        {
+            return "[";
+
+        }
+        public string LastLine()
+        {
+            return "]";
         }
     }
 }

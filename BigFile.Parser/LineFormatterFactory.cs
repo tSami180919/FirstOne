@@ -2,10 +2,18 @@
 {
     internal static class LineFormatterFactory
     {
-        internal static IFormatter Build()
+        internal static IFormatter Build(OutputType outputType)
         {
-            return new JsonFormatter();
 
+            switch (outputType)
+            {
+                case OutputType.json:
+                    return new JsonFormatter();
+                case OutputType.csv:
+                    return new CsvFormatter();
+                default:
+                    throw new System.Exception("No Formatter Defined for the wanted Format");
+            }
         }
     }
 }
