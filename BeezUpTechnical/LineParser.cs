@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Useful;
+using System;
 
 namespace BeezUpTechnical
 {
@@ -17,7 +18,7 @@ namespace BeezUpTechnical
             this.indexColumnD = d;
         }
 
-        internal void Act(string line)
+        internal StatusData<ModelLine> Act(string line)
         {
             try
             {
@@ -29,21 +30,13 @@ namespace BeezUpTechnical
                 var c = int.Parse(columnC);
                 var d = int.Parse(columnD);
 
-                if(c + d > 100)
-                    Console.WriteLine(columnNames[indexColumnA] + columnNames[indexColumnB]);
-
+                return StatusDataBuilder.Create(new ModelLine(columnNames[indexColumnA], columnNames[indexColumnB], c, d));
             }
             catch (Exception e)
             {
+                return StatusDataBuilder.Create<ModelLine>(e.Message);
             }
 
         }
-
-
-
-
     }
-
-
-
 }

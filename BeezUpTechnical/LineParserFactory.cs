@@ -22,14 +22,5 @@ namespace BeezUpTechnical
             return new LineParser(indexColumnA, indexColumnB, indexColumnC, indexColumnD);
 
         }
-
-
-
-
-
-
     }
-
-
-
 }
