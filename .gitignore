@@ -1,4 +1,5 @@
 
 /.vs/*
-/BeezUpTechnical/bin/*
-/BeezUpTechnical/obj/*
+/BeezUpTechnical/Properties/launchSettings.json
+*/obj/*
+*/bin/*
